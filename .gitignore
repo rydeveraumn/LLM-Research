@@ -1,0 +1,10 @@
+.ipynb_checkpoints/
+.DS_Store
+__pycache__
+.virtual_documents/
+
+# Ignore all downloaded data
+datasets
+
+# Ignore notebooks for now as well
+*.ipynb
