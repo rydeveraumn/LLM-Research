@@ -1,4 +1,4 @@
-![](https://github.com/sun-umn/LLM-Research/blob/main/llm_research.png)
+![](https://github.com/rydeveraumn/LLM-Research/blob/main/llm_research.png)
 
 # LLM-Research
 A repository dedicated to exploring Natural Language Processing and Large Language Models. Dive into advanced research, algorithms, and applications shaping the future of NLP and AI.
