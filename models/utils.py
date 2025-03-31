@@ -1,5 +1,6 @@
 # third party
 import torch
+from tiktoken.core import Encoding
 
 # first party
 from models.gpt2 import GPT2Model
@@ -36,3 +37,22 @@ def generate_text_simple(
         idx = torch.cat([idx, idx_next], dim=1)
 
     return idx
+
+
+def text_to_token_ids(text: str, tokenizer: Encoding) -> torch.Tensor:
+    """
+    Function to convert text to encoded token ids for
+    LLMs
+    """
+    encoded = tokenizer.encode(text, allowed_special={"<|endoftext|>"})
+    encoded_tensor = torch.tensor(encoded).unsqueeze(0)  # Add the batch dimension
+    return encoded_tensor
+
+
+def token_ids_to_text(token_ids: torch.Tensor, tokenizer: Encoding) -> str:
+    """
+    Function to convert token ids back to text for
+    LLMs
+    """
+    flatten_token_ids = token_ids.squeeze(0)
+    return tokenizer.decode(flatten_token_ids.tolist())
