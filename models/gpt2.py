@@ -17,7 +17,7 @@ class GPT2Model(nn.Module):
         self.vocab_size = cfg["vocab_size"]
         self.emb_dim = cfg["emb_dim"]
         self.context_length = cfg["context_length"]
-        self.dropout = cfg["dropout"]
+        self.dropout = cfg["drop_rate"]
         self.n_layers = cfg["n_layers"]
 
         # Create the token and position embeddings
@@ -33,7 +33,7 @@ class GPT2Model(nn.Module):
         self.out_head = nn.Linear(self.emb_dim, self.vocab_size, bias=False)
 
     def forward(self, in_idx: torch.Tensor) -> torch.Tensor:
-        batch_size, seq_len = in_idx.shape
+        _, seq_len = in_idx.shape
 
         # Map tokens to embeddings
         tok_embeds = self.tok_emb(in_idx)
